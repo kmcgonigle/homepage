@@ -1,0 +1,30 @@
+/** Placeholder CSS **/
+
+body	{ background: url(bg.png) repeat 0 0; color: #3a3a3a; }
+
+body > div	{ max-width: 575px; width: 50%; min-width: 250px; margin: 10% auto; position: relative; text-align: center; background:  #fff; padding: 2% 5%; border: 8px solid #cfcfcf; box-shadow: 0 4px 12px #1b1b1b; opacity: 0.95; }
+
+h1 {
+    font-family: 'Comfortaa', cursive;
+    font-size: 3.75em;
+    line-height: 1.2em;
+    margin: 15px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: normal;
+}
+h2	{ font-family: 'PT Sans', sans-serif; font-weight: normal; }
+p	{ font-family: 'PT Sans', sans-serif; line-height: 1.45em; font-size: 1.1em; }
+a {
+    color: #0caade;
+    font-size: 1.2em;
+}
+a:hover	{ text-decoration: none; }
+.cursive { font-family: 'Comfortaa', cursive; line-height: 1.6; }
+.hr {
+    border-bottom: 1px solid #ccc;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 16px;
+    width: 90%;
+}
