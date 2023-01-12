@@ -1,0 +1,6 @@
+# ignore files and directories that pre-date this project
+_old/
+_subdomains/
+.ftpquota
+.well-known/
+cgi-bin/
