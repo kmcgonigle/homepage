@@ -34,7 +34,7 @@ body {
     background-color: #fcfaf2;
 }
 body > div {
-    color: #333;
+    color: #663715;
     font-family: var(--body-font);
     font-weight: normal;
     max-width: 1200px;
@@ -49,6 +49,7 @@ h1 {
     font-size: 5.75em;
     line-height: 1.2em;
     margin: 0 0 -20px 0;
+    display: block;
     position: relative;
     text-shadow: 2px 0 #fcfaf2, -2px 0 #fcfaf2, 0 2px #fcfaf2, 0 -2px #fcfaf2, 1px 1px #fcfaf2, -1px -1px #fcfaf2, 1px -1px #fcfaf2, -1px 1px #fcfaf2;
 
@@ -63,9 +64,9 @@ h1 {
 h1 > span {
     display: block;
     position: relative;
-    /* animation: fade-in 0.8s 0.1s forwards cubic-bezier(0.11, 0, 0.5, 0);
+    animation: 0.33s fade-in forwards cubic-bezier(0.11, 0, 0.5, 0);
     opacity: 0;
-    filter: blur(4px); */
+    /* filter: blur(4px); */
 }
 
 h2, .h2	{
@@ -102,6 +103,19 @@ img { width: 100%; }
 /* Element-specific */
 /* Intro */
 h1::after {
+    color: #f15946;
+    content: "Hello!";
+    display: block;
+    position: absolute;
+    z-index: -1;
+    top: 8px;
+    left: 10px;
+
+    animation: 0.4s fade-in 0.2s forwards cubic-bezier(0.11, 0, 0.5, 0);
+    opacity: 0;
+    filter: blur(4px);
+}
+h1 > span::after {
     color: #e9e1ea;
     content: "Hello!";
     display: block;
@@ -110,15 +124,6 @@ h1::after {
     top: 4px;
     left: 5px;
     text-shadow: 2px 0 #f9c22e, -2px 0 #f9c22e, 0 2px #f9c22e, 0 -2px #f9c22e, 1px 1px #f9c22e, -1px -1px #f9c22e, 1px -1px #f9c22e, -1px 1px #f9c22e;
-}
-h1 span::after {
-    color: #f15946;
-    content: "Hello!";
-    display: block;
-    position: absolute;
-    z-index: -1;
-    top: 8px;
-    left: 10px;
 }
 div > .flex:first-child { align-items: last-baseline; justify-content: space-between; }
 .flex h2 { margin: 0; }
