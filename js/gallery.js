@@ -55,8 +55,6 @@ const expandProject = (event) => {
 	// Any other link clicks should be ignored
 	if (!event.target.closest('a').classList.contains('project-list__thumbnail')) return false;
 
-	event.preventDefault();
-
 	const targetHref = event.target.closest('a')?.getAttribute('href').replace('#', '');
 	const targetEl = document.getElementById(targetHref).closest('li');
 
