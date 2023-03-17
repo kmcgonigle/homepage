@@ -47,6 +47,7 @@ body {
     background-color: var(--yellow-light-bg);
     color: var(--brown-dark);
     font-family: var(--body-font);
+    font-size: 1rem;
     font-weight: normal;
     margin: 0;
     padding: 0;
@@ -198,7 +199,13 @@ header .content-wrapper { align-items: last baseline; justify-content: space-bet
 }
 
 /* Gallery */
-#projects { background-color: var(--yellow-light); margin: 30px 0 40px; padding: 10px 0; }
+#projects {
+    background-color: var(--yellow-light);
+    border-bottom: 2px solid var(--purple-light);
+    border-top: 2px solid var(--purple-light);
+    margin: 30px 0 40px;
+    padding: 10px 0;
+}
 #projects h2 { margin-bottom: 0; }
 #project-list {
     display: flex;
@@ -350,7 +357,6 @@ footer p { margin: 0; padding: 20px 0 30px; font-size: 1rem; }
         flex-direction: column-reverse;
         padding-bottom: 20px;
         background-color: var(--yellow-light-bg);
-        border-bottom: 2px solid var(--purple-light);
         margin-bottom: 26px;
     }
     #project-list.expanded li.isOpen div:first-child { margin: 0 auto; }
@@ -367,11 +373,11 @@ footer p { margin: 0; padding: 20px 0 30px; font-size: 1rem; }
         margin: 20px auto;
       }
 
-    #career, #noncareer { border-top: 2px solid var(--purple-light); padding-top: 20px; }
+    #career, #noncareer { padding-top: 20px; }
     #career ul, #noncareer ul { max-width: 600px; }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 825px) {
     .desktop-only { display: block; }
 
     header::after { top: 91%; }

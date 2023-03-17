@@ -46,6 +46,8 @@ const closeProject = (targetHref, targetEl) => {
 };
 
 const openProject = (targetEl) => {
+	console.log('opening...');
+	console.log('targetEl', targetEl);
 	// Bring project to the top of the list and add the "isOpen" class
 	projectList.prepend(targetEl);
 	return targetEl.classList.add(_openClassName);
@@ -85,3 +87,13 @@ const expandProject = (event) => {
 };
 
 projectList.addEventListener('click', expandProject, false);
+
+// If project-name hash is in address bar, automatically open corresponding project description
+const projectNameHash = window.location.hash;
+if (projectNameHash) {
+	const nameWithoutHash = projectNameHash.replace('#', '');
+	const targetSection = document.getElementById(nameWithoutHash).closest('li');
+
+	openProject(targetSection);
+	projectList.classList.add(_expandedClassName);
+}
