@@ -1,12 +1,13 @@
-// TODO add listener for "Enter" key that toggles the content open
+// TODO add listener for "Enter" key that toggles the content open, as well as for explicit close button
 // TODO add slideshow / additional thumbnails to each project
-// TODO add explicit 'close' button
 
 // Globals
 const _expandedClassName = 'expanded';
 const _openClassName = 'isOpen';
 
+const parentSection = document.getElementById('projects');
 const projectList = document.getElementById('project-list');
+const closeBtn = document.getElementById('closeProject');
 
 // Ordering helper methods
 const findElementInitialOrder = (name) => {
@@ -46,8 +47,6 @@ const closeProject = (targetHref, targetEl) => {
 };
 
 const openProject = (targetEl) => {
-	console.log('opening...');
-	console.log('targetEl', targetEl);
 	// Bring project to the top of the list and add the "isOpen" class
 	projectList.prepend(targetEl);
 	return targetEl.classList.add(_openClassName);
@@ -60,16 +59,14 @@ const expandProject = (event) => {
 	const targetHref = event.target.closest('a')?.getAttribute('href').replace('#', '');
 	const targetEl = document.getElementById(targetHref).closest('li');
 
-	if (!projectList.classList.contains(_expandedClassName)) {
-		console.log('no items open');
+	if (!parentSection.classList.contains(_expandedClassName)) {
 		// No items are currently open; expand the clicked item
 		openProject(targetEl);
-		projectList.classList.add(_expandedClassName);
+		parentSection.classList.add(_expandedClassName);
 	} else {
 		const isOpen = targetEl.classList.contains(_openClassName);
 
 		if (!isOpen) {
-			console.log('close current project and open new one');
 			// Close the already-open project
 			const currentProject = document.getElementsByClassName(_openClassName)[0];
 			const currentProjectHref = currentProject.children[0].firstElementChild.getAttribute('href').replace('#', '');
@@ -78,22 +75,35 @@ const expandProject = (event) => {
 			// Open the clicked project
 			openProject(targetEl);
 		} else {
-			console.log('just close current project');
 			// User is just collapsing the currently-open project
 			closeProject(targetHref, targetEl);
-			projectList.classList.remove(_expandedClassName);
+			parentSection.classList.remove(_expandedClassName);
 		}
 	}
 };
 
+// Explicit 'close' button
+const handleCloseBtn = (event) => {
+	const openSection = document.getElementsByClassName(_openClassName)[0];
+	const openSectionName = openSection.children[0].firstElementChild.getAttribute('href').replace('#', '');
+	const targetEl = document.getElementById(openSectionName).closest('li');
+	console.log('openSectionName', openSectionName);
+	console.log('targetEl', targetEl);
+
+	closeProject(openSectionName, targetEl);
+	return parentSection.classList.remove(_expandedClassName);
+};
+
+// Add event listeners
 projectList.addEventListener('click', expandProject, false);
+closeBtn.addEventListener('click', handleCloseBtn, false);
 
 // If project-name hash is in address bar, automatically open corresponding project description
 const projectNameHash = window.location.hash;
-if (projectNameHash) {
+if (projectNameHash && projectNameHash !== '#projects') {
 	const nameWithoutHash = projectNameHash.replace('#', '');
 	const targetSection = document.getElementById(nameWithoutHash).closest('li');
 
 	openProject(targetSection);
-	projectList.classList.add(_expandedClassName);
+	parentSection.classList.add(_expandedClassName);
 }
