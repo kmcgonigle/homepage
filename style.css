@@ -44,7 +44,7 @@
 
 /* Global */
 body {
-    background-color: var(--yellow-light-bg);
+    background-color: var(--purple-light-bg);
     color: var(--brown-dark);
     font-family: var(--body-font);
     font-size: 1rem;
@@ -52,7 +52,12 @@ body {
     margin: 0;
     padding: 0;
 }
-body > div { overflow-x: hidden; }
+body > div {
+    background-color: var(--yellow-light-bg);
+    overflow-x: hidden;
+    position: relative;
+    z-index: 1;
+}
 
 h1 {
     color: var(--purple);
@@ -117,7 +122,7 @@ hr {
 img { width: 100%; }
 
 .content-wrapper {
-    max-width: 1200px;
+    max-width: 975px;
     margin: 0 auto;
     padding: 0 20px;
     position: relative;
@@ -213,7 +218,7 @@ header::after {
     max-width: 105%;
     content: "\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9";
 }
-header .content-wrapper { align-items: last baseline; justify-content: space-between; max-width: 1180px; }
+header .content-wrapper { align-items: last baseline; justify-content: space-between; }
 
 #bio { padding: 10px 0; }
 #bio .content-wrapper > div > p { margin: 20px 0 20px 10%; }
@@ -235,6 +240,7 @@ header .content-wrapper { align-items: last baseline; justify-content: space-bet
     padding: 10px 0;
     position: relative;
 }
+#projects .content-wrapper { max-width: 1200px; }
 #projects #closeProject { display: none; }
 #projects h2 { margin-bottom: 0; }
 #project-list {

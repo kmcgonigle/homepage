@@ -9,6 +9,35 @@ const parentSection = document.getElementById('projects');
 const projectList = document.getElementById('project-list');
 const closeBtn = document.getElementById('closeProject');
 
+// Loading the gallery items
+const projectTemplate = (data) => {
+	return (
+		`<li>
+			<div>
+				<a href="#${data.id}" class="project-list__thumbnail">
+					<img src="images/${data.primaryPhotoFilename}" alt="${data.primaryPhotoAlt}" />
+					<p>${data.linkText}</p>
+				</a>
+			</div>
+
+			<div id="${data.id}" class="project-list__description">
+				<div>
+					<h3>${data.header}</h3>
+					${data.content}
+				</div>
+			</div>
+		</li>`
+	);
+}
+const loadProjects = (() => {
+	if (!galleryData || !galleryData?.projects?.length === 0) return;
+
+	galleryData.projects.forEach(project => {
+		// Add each project as a <li> within the projectList <ul>
+		projectList.innerHTML += projectTemplate(project);
+	});
+})(); // IIFE
+
 // Ordering helper methods
 const findElementInitialOrder = (name) => {
 	return initialOrder.findIndex((id) => id === name);
@@ -87,8 +116,6 @@ const handleCloseBtn = (event) => {
 	const openSection = document.getElementsByClassName(_openClassName)[0];
 	const openSectionName = openSection.children[0].firstElementChild.getAttribute('href').replace('#', '');
 	const targetEl = document.getElementById(openSectionName).closest('li');
-	console.log('openSectionName', openSectionName);
-	console.log('targetEl', targetEl);
 
 	closeProject(openSectionName, targetEl);
 	return parentSection.classList.remove(_expandedClassName);
