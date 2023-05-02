@@ -4,10 +4,89 @@
 // Globals
 const _expandedClassName = 'expanded';
 const _openClassName = 'isOpen';
+const _carouselOptions = {
+	adaptiveHeight: true,
+	infinite: true,
+	Dots: false,
+	Thumbs: {
+		type: 'classic',
+	},
+};
 
 const parentSection = document.getElementById('projects');
 const projectList = document.getElementById('project-list');
 const closeBtn = document.getElementById('closeProject');
+
+// Loading the projects
+const primaryProjectImage = (filename, altText) => {
+	return (
+		`<img src="images/${filename}" alt="${altText}" />`
+	);
+};
+
+const carouselTemplate = (data) => {
+	let slides = "";
+	data.carouselItems.forEach((item) => {
+		slides += (
+			`<div class="f-carousel__slide ${item.caption ? 'has-caption' : ''}" data-thumb-src="images/${data.id}/${item.filename}">
+				<img src="images/${data.id}/${item.filename}" alt="${item.altText ? item.altText : data.primaryPhotoAltText}" />
+				<p class="${!item.caption ? 'no-' : ''}caption">${item.caption || ''}</p>
+			</div>`
+		);
+	});
+
+	return (
+		`<div class="f-carousel" id="${data.id}-carousel">
+			<div class="f-carousel__slide" data-thumb-src="images/${data.primaryPhotoFilename}">
+				${primaryProjectImage(data.primaryPhotoFilename, data.primaryPhotoAltText)}
+			</div>
+			${slides}
+		</div>`
+	);
+};
+
+const projectTemplate = (data) => {
+	const hasCarouselItems = data?.carouselItems?.length > 0;
+	return (
+		`<li class="${hasCarouselItems ? '' : 'no-carousel'}">
+			<div>
+				<a href="#${data.id}" class="project-list__thumbnail">
+					${primaryProjectImage(data.primaryPhotoFilename, data.primaryPhotoAltText)}
+					<p>${data.linkText}</p>
+				</a>
+				${hasCarouselItems ? carouselTemplate(data) : ''}
+			</div>
+
+			<div id="${data.id}" class="project-list__description">
+				<div>
+					<h3>${data.header}</h3>
+					${data.content}
+				</div>
+			</div>
+		</li>`
+	);
+};
+
+const initImageCarousels = () => {
+	// Initialize project image carousels after templatized project data has been added to the DOM
+	galleryData.projects.forEach((project) => {
+		const carouselContainer = document.getElementById(`${project.id}-carousel`);
+		if (carouselContainer) {
+			new Carousel(carouselContainer, _carouselOptions, { Thumbs });
+		}
+	});
+};
+
+const loadProjects = (() => {
+	if (!galleryData || !galleryData?.projects?.length === 0) return;
+
+	galleryData.projects.forEach((project) => {
+		// Add each project as a <li> within the projectList <ul>
+		projectList.innerHTML += projectTemplate(project);
+	});
+
+	initImageCarousels();
+})(); // IIFE
 
 // Ordering helper methods
 const findElementInitialOrder = (name) => {
@@ -87,8 +166,6 @@ const handleCloseBtn = (event) => {
 	const openSection = document.getElementsByClassName(_openClassName)[0];
 	const openSectionName = openSection.children[0].firstElementChild.getAttribute('href').replace('#', '');
 	const targetEl = document.getElementById(openSectionName).closest('li');
-	console.log('openSectionName', openSectionName);
-	console.log('targetEl', targetEl);
 
 	closeProject(openSectionName, targetEl);
 	return parentSection.classList.remove(_expandedClassName);
