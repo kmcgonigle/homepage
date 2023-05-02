@@ -323,6 +323,16 @@ header .content-wrapper { align-items: last baseline; justify-content: space-bet
 }
 
 /* Projects gallery image carousel rules & overrides */
+.f-carousel {
+    --f-carousel-theme-color: var(--purple);
+    --f-button-bg: var(--yellow-light-bg);
+    --f-button-hover-bg: var(--yellow-light-bg);
+    --f-button-active-bg: var(--yellow-light-bg);
+}
+.f-carousel__thumbs {
+    --f-thumb-width: 75px;
+    --f-thumb-height: 75px;
+}
 .f-carousel__slide {
     height: auto;
     overflow: visible;
@@ -343,17 +353,23 @@ header .content-wrapper { align-items: last baseline; justify-content: space-bet
     background-color: #333;
     color: var(--yellow-light);
     filter: brightness(85%);
+    text-align: center;
 }
 .f-carousel__nav {
     position: absolute;
-    width: 120%;
+    width: 116%;
     transform: translate(0%, 100%);
-    left: -10%;
+    left: -8%;
     top: 50%;
 }
-.f-carousel__thumbs {
-    --f-thumb-width: 75px;
-    --f-thumb-height: 75px;
+.f-carousel__nav > .f-button {
+    border-radius: 50%;
+    opacity: 0.75;
+    border: 1px solid transparent;
+}
+.f-carousel__nav > .f-button:hover {
+    opacity: 1;
+    border: 1px solid var(--purple-light);
 }
 
 
@@ -418,6 +434,8 @@ footer p { margin: 0; padding: 20px 0 30px; font-size: 1rem; }
     header .content-wrapper { max-width: 850px; }
 
     #bio { padding: 10px 4%; }
+
+    .f-carousel__nav { display: none; }
 }
 
 @media (max-width: 940px) {
@@ -446,7 +464,7 @@ footer p { margin: 0; padding: 20px 0 30px; font-size: 1rem; }
         background-color: var(--yellow-light-bg);
         margin-bottom: 26px;
     }
-    .expanded #project-list li.isOpen div:first-child { margin: 0 auto; }
+    .expanded #project-list li.isOpen > div:first-child { margin: 0 auto; }
     .expanded #project-list li.isOpen a img { margin-top: 0; }
     .expanded #project-list li.isOpen .project-list__description { margin-left: 0; max-width: 100%; padding-top: 0; }
     .expanded #project-list li.isOpen .project-list__description > div {
@@ -460,7 +478,13 @@ footer p { margin: 0; padding: 20px 0 30px; font-size: 1rem; }
     .expanded #project-list li.isOpen .project-list__description > div p {
         max-width: 600px;
         margin: 20px auto;
-      }
+    }
+
+    .f-carousel {
+        max-width: 90%;
+        margin: 0 auto;
+    }
+    .f-carousel__nav { display: block; }
 
     #career, #noncareer { padding-top: 20px; }
     #career ul, #noncareer ul { max-width: 600px; }
