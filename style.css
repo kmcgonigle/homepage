@@ -7,6 +7,7 @@
         Filter by type of project
         Optimize all assets -- TinyJPG/TinyPNG, minify, gzip, create .htaccess
         Add Sass?
+        Favicon
 */
 
 /* Preliminary palette */
@@ -25,6 +26,8 @@
 :root {
     --body-font:    'PT Sans', Arial, Helvetica, sans-serif;
     --title-font:   'Comfortaa', Arial, Helvetica, sans-serif;
+
+    --border-radius-large: 28px;
 
     --brown-dark:       #663715;
     --coral:            #f15946;
@@ -255,7 +258,7 @@ header .content-wrapper { align-items: last baseline; justify-content: space-bet
 
 #project-list li a img {
     border: 4px solid transparent;
-    border-radius: 28px;
+    border-radius: var(--border-radius-large);
     transition: all 0.25s ease-in;
 }
 #project-list li a p {
@@ -274,6 +277,9 @@ header .content-wrapper { align-items: last baseline; justify-content: space-bet
 
 #projects:not(.expanded) #project-list { padding: 10px 3% 0; }
 
+#project-list li:not(.isOpen) .f-thumbs__slide,
+#project-list li:not(.isOpen) .f-carousel { display: none; }
+
 /* Gallery with open item */
 #projects.expanded #closeProject {
     display: block;
@@ -288,12 +294,15 @@ header .content-wrapper { align-items: last baseline; justify-content: space-bet
     max-width: 100%;
     width: 100%;
 }
+.expanded #project-list li.isOpen > div { max-width: 550px; position: relative; }
 /* .expanded #project-list li.isOpen a img { animation: 0.5s enlargeThumbnail forwards; } */
-.expanded #project-list li.isOpen a img { margin-top: 20px; }
+.expanded #project-list li.isOpen:not(.no-carousel) .project-list__thumbnail { display: none; }
+.expanded #project-list li.isOpen > div > a > img,
+.expanded #project-list li.isOpen > div > .f-carousel { margin-top: 20px; }
 .expanded #project-list li.isOpen a p { display: none; }
 .expanded #project-list li.isOpen .project-list__description {
     display: block;
-    max-width: 64%;
+    max-width: 55%;
     opacity: 0;
     margin-left: 42px;
     transition: opacity 1s ease;
@@ -302,7 +311,7 @@ header .content-wrapper { align-items: last baseline; justify-content: space-bet
 .expanded #project-list li.isOpen .project-list__description > div {
     background-color: var(--yellow-light-bg);
     border: 2px solid var(--purple-light);
-    border-radius: 28px;
+    border-radius: var(--border-radius-large);
     padding: 10px 40px 20px;
 }
 .expanded #project-list li.isOpen:not(.fadeOut) .project-list__description {
@@ -312,6 +321,41 @@ header .content-wrapper { align-items: last baseline; justify-content: space-bet
     animation: 0.2s fade-out 0s forwards ease-out;
     opacity: 1;
 }
+
+/* Projects gallery image carousel rules & overrides */
+.f-carousel__slide {
+    height: auto;
+    overflow: visible;
+}
+.f-carousel__slide > img {
+    border-radius: var(--border-radius-large);
+}
+.f-carousel__slide.has-caption > img {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.f-carousel__slide > .caption {
+    font-size: 0.9em;
+    margin: -14px 0 0;
+    padding: 20px;
+    border-bottom-left-radius: var(--border-radius-large);
+    border-bottom-right-radius: var(--border-radius-large);
+    background-color: #333;
+    color: var(--yellow-light);
+    filter: brightness(85%);
+}
+.f-carousel__nav {
+    position: absolute;
+    width: 120%;
+    transform: translate(0%, 100%);
+    left: -10%;
+    top: 50%;
+}
+.f-carousel__thumbs {
+    --f-thumb-width: 75px;
+    --f-thumb-height: 75px;
+}
+
 
 /* Career */
 #career ul, #noncareer ul {
