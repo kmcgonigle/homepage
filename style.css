@@ -1,14 +1,3 @@
-/*
-    To Do
-        Animation for entrance/landing
-        Animation for scrolling?
-        Research cool ways of creating a gallery
-        Add resume/bio?
-        Filter by type of project
-        Optimize all assets -- TinyJPG/TinyPNG, minify, gzip, create .htaccess
-        Add Sass?
-*/
-
 /* Preliminary palette */
 /*
     purple: #b58bba
@@ -72,10 +61,6 @@ h1 {
     text-shadow: 2px 0 var(--yellow-light-bg), -2px 0 var(--yellow-light-bg), 0 2px var(--yellow-light-bg), 0 -2px var(--yellow-light-bg), 1px 1px var(--yellow-light-bg), -1px -1px var(--yellow-light-bg), 1px -1px var(--yellow-light-bg), -1px 1px var(--yellow-light-bg);
     z-index: 1;
 
-    /* transform: scale(0.4);
-    transform-origin:bottom left;
-    animation: scale 1s forwards cubic-bezier(0.5, 1, 0.89, 1); */
-
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-weight: normal;
@@ -85,7 +70,6 @@ h1 > span {
     position: relative;
     animation: 0.33s fade-in forwards cubic-bezier(0.11, 0, 0.5, 0);
     opacity: 0;
-    /* filter: blur(4px); */
 }
 
 h2, .h2	{
@@ -107,7 +91,6 @@ p	{
     line-height: 1.5;
     font-size: 1.15rem;
     margin: 20px;
-    text-align: justify;
 }
 a { color: var(--coral); }
 a:hover	{ color: var(--teal-dark); text-decoration: none; }
@@ -117,9 +100,6 @@ hr {
     position: relative;
     max-width: 1200px;
     width: 100%;
-
-    /* animation: tilt 0.25s 0.5s forwards ease-in-out; */
-    transform: rotate(0);
 }
 img { width: 100%; }
 
@@ -139,7 +119,7 @@ div > section:last-child { padding: 0 20px 10px; }
 .cursive { font-family: var(--title-font); line-height: 1.6; }
 .flex { display: flex; align-items: center; }
 .flex h2 { margin: 0; }
-.sr-only { text-indent: -9999px; display: inline-block; }
+.sr-only { text-indent: -9999px; display: inline-block; } /* For screen-reader-only content */
 
 .pull-quote {
     border-left: 4px solid var(--purple-light);
@@ -218,12 +198,13 @@ header::after {
     top: 86%;
     left: -32px;
     max-width: 105%;
+    /* The content fill below creates the "lace edging" effect on the site header */
     content: "\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9\25C9";
 }
-header .content-wrapper { align-items: last baseline; justify-content: space-between; }
+header .content-wrapper { align-items: last baseline; justify-content: space-between; max-width: 888px; }
 
 #bio { padding: 10px 0; }
-#bio .content-wrapper > div > p { margin: 20px 0 20px 10%; }
+#bio .content-wrapper > div > p { margin: 20px 0 20px 10%; text-align: justify; }
 .bio-img {
     border: 10px solid #fff;
     border-radius: 50%;
