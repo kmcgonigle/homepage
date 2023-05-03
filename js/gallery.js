@@ -1,5 +1,4 @@
 // TODO add listener for "Enter" key that toggles the content open, as well as for explicit close button
-// TODO add slideshow / additional thumbnails to each project
 
 // Globals
 const _expandedClassName = 'expanded';
@@ -50,7 +49,7 @@ const projectTemplate = (data) => {
 	return (
 		`<li class="${hasCarouselItems ? '' : 'no-carousel'}">
 			<div>
-				<a href="#${data.id}" class="project-list__thumbnail">
+				<a href="#${data.id}" class="project-list__thumbnail" tabindex="0">
 					${primaryProjectImage(data.primaryPhotoFilename, data.primaryPhotoAltText)}
 					<p>${data.linkText}</p>
 				</a>
@@ -109,8 +108,6 @@ const closeProject = (targetHref, targetEl) => {
 	const initialIndex = findElementInitialOrder(targetHref);
 	const projectCount = projectList.children.length;
 
-	// targetEl.classList.add('fadeOut');
-
 	// setTimeout(() => {
 		// Close item after fadeOut effect is complete
 		if (initialIndex === (projectCount - 1)) {
@@ -121,7 +118,6 @@ const closeProject = (targetHref, targetEl) => {
 		}
 
 		targetEl.classList.remove(_openClassName);
-		// targetEl.classList.remove('fadeOut');
 	// }, 300);
 };
 
@@ -174,6 +170,17 @@ const handleCloseBtn = (event) => {
 // Add event listeners
 projectList.addEventListener('click', expandProject, false);
 closeBtn.addEventListener('click', handleCloseBtn, false);
+
+projectList.addEventListener('keypress', (event) => {
+    if (event.key === 'Enter') {
+      return expandProject(event);
+    }
+});
+closeBtn.addEventListener('keypress', (event) => {
+    if (event.key === 'Enter') {
+      return handleCloseBtn(event);
+    }
+});
 
 // If project-name hash is in address bar, automatically open corresponding project description
 const projectNameHash = window.location.hash;
