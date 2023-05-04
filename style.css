@@ -104,7 +104,7 @@ hr {
 img { width: 100%; }
 
 .content-wrapper {
-    max-width: 975px;
+    max-width: 976px;
     margin: 0 auto;
     padding: 0 20px;
     position: relative;
@@ -259,6 +259,8 @@ header .content-wrapper { align-items: last baseline; justify-content: space-bet
 
 #project-list li:not(.isOpen) .f-thumbs__slide,
 #project-list li:not(.isOpen) .f-carousel { display: none; }
+
+#projects noscript p { width: 100%; text-align: center; }
 
 /* Gallery with open item */
 #projects.expanded #closeProject {
