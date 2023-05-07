@@ -1,14 +1,6 @@
 const galleryData = {
     "projects": [
       {
-        "id": "scarf",
-        "linkText": "Two-color knit scarf",
-        "header": "Two-color knit scarf, \"Lindisfarne\"",
-        "content": "<p>The pattern of this scarf was inspired by Celtic knots found in illuminated manuscripts, and it was a very interesting project &mdash; different from any other knit piece I've made. I basically threw myself into the deep-end of cable knitting and learning to use charts.</p><p>Because it's worked length-wise, the initial cast-on takes a LONG time and requires a lot of double-checking stitch-counts. It was my first time knitting a <em>steek</em> as well.</p><p class=\"pull-quote\">In knitting, steeking is a shortcut used to knit garments such as sweaters in the round without interruption for openings or sleeves until the end. After completing a tube, <strong>a straight line is cut</strong> along the center of a column of stitches[...]. The steek itself is a bridge of extra stitches, in which the cut is made, and is usually 6-10 stitches wide. &mdash;<a href=\"https://en.wikipedia.org/wiki/Steek\" target=\"_blank\">Wikipedia</a></p><p>That's right! The section of this scarf that becomes the fringe is knit with the sole purpose of being <strong>cut with a scissors at the end</strong>! &#128561 After you cut, you must carefully unravel the ends and then gather and knot them. Knitting this took me the better part of a year, so taking a scissors to it at the end was pretty nerve-wracking, but it all worked out fine.</p><p>If you'd like to try this pattern for yourself, it's available from <a href=\"https://www.ravelry.com/patterns/library/lindisfarne-7\" target=\"_blank\">Lucy Hague on Ravelry</a>.</p>",
-        "primaryPhotoFilename": "celtic-scarf.jpg",
-        "primaryPhotoAltText": "Knit scarf with celtic knots"
-      },
-      {
         "id": "clipper",
         "linkText": "\"Magical Girl\" Clipper Transit Card",
         "header": "\"Magical Girl\" Clipper Transit Card",
@@ -74,6 +66,14 @@ const galleryData = {
             "caption": "After installing individual LEDs in the right-hand side of the Iris"
           }
         ]
+      },
+      {
+        "id": "scarf",
+        "linkText": "Two-color knit scarf",
+        "header": "Two-color knit scarf, \"Lindisfarne\"",
+        "content": "<p>The pattern of this scarf was inspired by Celtic knots found in illuminated manuscripts, and it was a very interesting project &mdash; different from any other knit piece I've made. I basically threw myself into the deep-end of cable knitting and learning to use charts.</p><p>Because it's worked length-wise, the initial cast-on takes a LONG time and requires a lot of double-checking stitch-counts. It was my first time knitting a <em>steek</em> as well.</p><p class=\"pull-quote\">In knitting, steeking is a shortcut used to knit garments such as sweaters in the round without interruption for openings or sleeves until the end. After completing a tube, <strong>a straight line is cut</strong> along the center of a column of stitches[...]. The steek itself is a bridge of extra stitches, in which the cut is made, and is usually 6-10 stitches wide. &mdash;<a href=\"https://en.wikipedia.org/wiki/Steek\" target=\"_blank\">Wikipedia</a></p><p>That's right! The section of this scarf that becomes the fringe is knit with the sole purpose of being <strong>cut with a scissors at the end</strong>! &#128561 After you cut, you must carefully unravel the ends and then gather and knot them. Knitting this took me the better part of a year, so taking a scissors to it at the end was pretty nerve-wracking, but it all worked out fine.</p><p>If you'd like to try this pattern for yourself, it's available from <a href=\"https://www.ravelry.com/patterns/library/lindisfarne-7\" target=\"_blank\">Lucy Hague on Ravelry</a>.</p>",
+        "primaryPhotoFilename": "celtic-scarf.jpg",
+        "primaryPhotoAltText": "Knit scarf with celtic knots"
       }
     ]
   }
